@@ -4,7 +4,7 @@ registration of time-lapse imaging data
 # Dependencies
 MATLAB
 
-Image processing toolbox
+Image Processing Toolbox
 
 Signal Processing Toolbox
 
