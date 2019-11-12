@@ -22,7 +22,7 @@ Takehiro Ajioka
 
 E-mail:1790651m@stu.kobe-u.ac.jp
 
-# Affiliation
+## Affiliation
 
 Division of System Neuroscience, Kobe University of Graduate School of Medicine
 
