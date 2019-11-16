@@ -1,6 +1,8 @@
 # 2D_registration
 registration of time-lapse imaging data
 
+<img src="doc/demo.gif" width="800" align="below">
+
 
 Image_registration_fastは、高速なレジストをおこなうコード(精度は普通)
 
