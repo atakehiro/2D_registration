@@ -1,7 +1,7 @@
-range_xy = 30; %‚¸‚ç‚·Å‘å’li{,[j
-range_theta = 0.1;%‰ñ“]‚·‚éÅ‘å’l(“x)
+range_xy = 30; %ãšã‚‰ã™æœ€å¤§å€¤ï¼ˆï¼‹,ãƒ¼ï¼‰
+range_theta = 0.1;%å›è»¢ã™ã‚‹æœ€å¤§å€¤(åº¦)
  
-%% tifƒtƒ@ƒCƒ‹‚Ì“Ç‚İæ‚è
+%% tifãƒ•ã‚¡ã‚¤ãƒ«ã®èª­ã¿å–ã‚Š
 tic
 [file, file_path] = uigetfile('*.tif');
 file_info = imfinfo([file_path, file]);
@@ -14,49 +14,49 @@ raw_IMG = zeros(d1,d2,T);
 for t = 1:T
     raw_IMG(:,:,t) = imread([file_path, file], t);
 end
-disp('ƒf[ƒ^“Ç‚İæ‚èŠ®—¹')
+disp('ãƒ‡ãƒ¼ã‚¿èª­ã¿å–ã‚Šå®Œäº†')
 toc
 
-%% ƒŒƒWƒXƒg
+%% ãƒ¬ã‚¸ã‚¹ãƒˆ
 tic
 target = mean(raw_IMG,3);
 IMG = zeros(d1,d2,T);
 Result = zeros(T,4);
 parfor t = 1:T
     [Result(t,:), IMG(:,:,t)] = image_regist_rigid(raw_IMG(:,:,t), target, range_xy, range_theta);
-    disp(['Œ»İ ',num2str(t),'ƒXƒ‰ƒCƒX–Ú‚ğŠ®—¹']);
+    disp(['ç¾åœ¨ ',num2str(t),'ã‚¹ãƒ©ã‚¤ã‚¹ç›®ã‚’å®Œäº†']);
 end
-disp('ƒŒƒWƒXƒgŠ®—¹')
+disp('ãƒ¬ã‚¸ã‚¹ãƒˆå®Œäº†')
 toc
 
-%% Œ‹‰Ê‚Ì•\¦
+%% çµæœã®è¡¨ç¤º
 figure
 subplot(2,2,1)
 plot(Result(:,1))
-title('ƒŒƒWƒXƒg‚Ì‘ŠŠÖŒW”')
+title('ãƒ¬ã‚¸ã‚¹ãƒˆæ™‚ã®ç›¸é–¢ä¿‚æ•°')
 subplot(2,2,2)
 plot(Result(:,2))
 hold on
 plot(1:T, range_theta * ones(1,T))
 hold on
 plot(1:T, -range_theta * ones(1,T))
-title('‰ñ“]—Ê')
+title('å›è»¢é‡')
 subplot(2,2,3)
 plot(Result(:,3))
 hold on
 plot(1:T, range_xy * ones(1,T))
 hold on
 plot(1:T, -range_xy * ones(1,T))
-title('x•ûŒüˆÚ“®—Ê')
+title('xæ–¹å‘ç§»å‹•é‡')
 subplot(2,2,4)
 plot(Result(:,4))
 hold on
 plot(1:T, range_xy * ones(1,T))
 hold on
 plot(1:T, -range_xy * ones(1,T))
-title('y•ûŒüˆÚ“®—Ê')
+title('yæ–¹å‘ç§»å‹•é‡')
 
-%% ƒAƒjƒ[ƒVƒ‡ƒ“•\¦
+%% ã‚¢ãƒ‹ãƒ¡ãƒ¼ã‚·ãƒ§ãƒ³è¡¨ç¤º
 figure
 tic
 for t = 1:T
@@ -66,12 +66,12 @@ end
 toc
 
 
-%% ‘‚«‚İ
+%% æ›¸ãè¾¼ã¿
 tic
 IMG = cast(IMG,['uint',num2str(bit)]);
-imwrite(IMG(:,:,1),[file_path, 'MATreged_', file,'.tif']);
+imwrite(IMG(:,:,1),[file_path, 'MATreged_', file]);
 for t = 2:T
-    imwrite(IMG(:,:,t),[file_path, 'MATreged_', file,'.tif'],'WriteMode','append');
+    imwrite(IMG(:,:,t),[file_path, 'MATreged_', file],'WriteMode','append');
 end
-disp('‘‚«‚İŠ®—¹')
+disp('æ›¸ãè¾¼ã¿å®Œäº†')
 toc
