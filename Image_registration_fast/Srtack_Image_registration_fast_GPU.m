@@ -1,6 +1,6 @@
-% normxcorr2‚ğg‚Á‚½ƒŒƒWƒXƒgƒŒ[ƒVƒ‡ƒ“
-% xy•ûŒü‚µ‚©“®‚©‚È‚¢‚ªA‚Æ‚Ä‚à‘¬‚­A—Ìˆæ‚ğw’è‚·‚é•K—v‚È‚µ
-%% tifƒtƒ@ƒCƒ‹‚Ì“Ç‚İæ‚è
+% normxcorr2ã‚’ä½¿ã£ãŸãƒ¬ã‚¸ã‚¹ãƒˆãƒ¬ãƒ¼ã‚·ãƒ§ãƒ³
+% xyæ–¹å‘ã—ã‹å‹•ã‹ãªã„ãŒã€ã¨ã¦ã‚‚é€Ÿãã€é ˜åŸŸã‚’æŒ‡å®šã™ã‚‹å¿…è¦ãªã—
+%% tifãƒ•ã‚¡ã‚¤ãƒ«ã®èª­ã¿å–ã‚Š
 tic
 [file, file_path] = uigetfile('*.tif');
 file_info = imfinfo([file_path, file]);
@@ -13,10 +13,10 @@ raw_IMG = zeros(d1,d2,T);
 for t = 1:T
     raw_IMG(:,:,t) = imread([file_path, file], t);
 end
-disp('ƒf[ƒ^“Ç‚İæ‚èŠ®—¹')
+disp('ãƒ‡ãƒ¼ã‚¿èª­ã¿å–ã‚Šå®Œäº†')
 toc
 
-%% ƒŒƒWƒXƒg
+%% ãƒ¬ã‚¸ã‚¹ãƒˆ
 tic
 target = gpuArray(mean(raw_IMG,3));
 IMG = zeros(d1,d2,T);
@@ -31,23 +31,23 @@ parfor t = 1:T
     C = gather(c);
     IMG(:,:,t) = imtranslate(a,[dx dy]);
     Result(t,:) = [C(dy + size(a,1), dx + size(a,2)), 0, dx, dy];
-    disp(['Œ»İ ',num2str(t),'ƒXƒ‰ƒCƒX–Ú‚ğŠ®—¹']);
+    disp(['ç¾åœ¨ ',num2str(t),'ã‚¹ãƒ©ã‚¤ã‚¹ç›®ã‚’å®Œäº†']);
 end
-disp('ƒŒƒWƒXƒgŠ®—¹')
+disp('ãƒ¬ã‚¸ã‚¹ãƒˆå®Œäº†')
 toc
 
-%% Œ‹‰Ê‚Ì•\¦
+%% çµæœã®è¡¨ç¤º
 figure
 subplot(2,2,1)
 plot(Result(:,1))
-title('ƒŒƒWƒXƒg‚Ì‘ŠŠÖŒW”')
+title('ãƒ¬ã‚¸ã‚¹ãƒˆæ™‚ã®ç›¸é–¢ä¿‚æ•°')
 subplot(2,2,3)
 plot(Result(:,3))
-title('x•ûŒüˆÚ“®—Ê')
+title('xæ–¹å‘ç§»å‹•é‡')
 subplot(2,2,4)
 plot(Result(:,4))
-title('y•ûŒüˆÚ“®—Ê')
-%% ƒAƒjƒ[ƒVƒ‡ƒ“•\¦
+title('yæ–¹å‘ç§»å‹•é‡')
+%% ã‚¢ãƒ‹ãƒ¡ãƒ¼ã‚·ãƒ§ãƒ³è¡¨ç¤º
 figure
 tic
 for t = 1:T
@@ -55,12 +55,12 @@ for t = 1:T
     pause(0.01)
 end
 toc
-%% ‘‚«‚İ
+%% æ›¸ãè¾¼ã¿
 tic
 IMG = cast(IMG,['uint',num2str(bit)]);
-imwrite(IMG(:,:,1),[file_path, 'MATregedFast_', file,'.tif']);
+imwrite(IMG(:,:,1),[file_path, 'MATregedFast_', file]);
 for t = 2:T
-    imwrite(IMG(:,:,t),[file_path, 'MATregedFast_', file,'.tif'],'WriteMode','append');
+    imwrite(IMG(:,:,t),[file_path, 'MATregedFast_', file],'WriteMode','append');
 end
-disp('‘‚«‚İŠ®—¹')
+disp('æ›¸ãè¾¼ã¿å®Œäº†')
 toc
