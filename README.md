@@ -12,8 +12,6 @@ Image_registration_limitedは、範囲を指定して、範囲内で精密なレ
 ## Dependencies
 MATLAB
 
-Image Processing Toolbox
-
 Signal Processing Toolbox
 
 (optional) Parallel Computing Toolbox (for GPU use)
