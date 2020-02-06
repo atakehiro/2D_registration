@@ -47,14 +47,7 @@ title('x方向移動量')
 subplot(2,2,4)
 plot(Result(:,4))
 title('y方向移動量')
-%% アニメーション表示
-figure
-tic
-for t = 1:T
-    imshow(IMG(:,:,t),[])
-    pause(0.01)
-end
-toc
+
 %% 書き込み
 tic
 IMG = cast(IMG,['uint',num2str(bit)]);
