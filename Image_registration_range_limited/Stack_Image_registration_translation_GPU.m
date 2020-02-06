@@ -1,5 +1,5 @@
 range_xy = 30; %ずらす最大値（＋,ー）
-
+addpath('function')
 %% tifファイルの読み取り
 tic
 [file, file_path] = uigetfile('*.tif');
