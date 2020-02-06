@@ -1,3 +1,4 @@
+% sourceとtargetの画像を1枚ずつ指定してレジストする
 GPU_flag = 0; %GPUを使う場合は１
 range_xy = 20; %ずらす最大値（＋,ー）
 range_theta = 0.3;%回転する最大値(度)
