@@ -10,7 +10,7 @@ Image_registration_fast is fast method but normal precision and only adapted to 
 
 Image_registration_precise is precise and adapted to rigid move (translation and rotation) but takes much time and you must set the range of searching.
 
-Image_registration_fastは、高速なレジストをおこなうコード(精度は普通)
+Image_registration_fastは、高速なレジストをおこなうコード(精度は普通、回転には対応していない)
 
 Image_registration_preciseは、範囲を指定して、範囲内で精密なレジストをおこなうコード(時間がかかる)
 
