@@ -1,3 +1,5 @@
+%スタック画像を指定して、その平均画像をtargetとしてレジスト
+GPU_flag = 0; %GPUを使う場合は１
 range_xy = 30; %ずらす最大値（＋,ー）
 range_theta = 0.1;%回転する最大値(度)
 addpath('function')
@@ -23,7 +25,15 @@ target = mean(raw_IMG,3);
 IMG = zeros(d1,d2,T);
 Result = zeros(T,4);
 parfor t = 1:T
-    [Result(t,:), IMG(:,:,t)] = image_regist_rigid(raw_IMG(:,:,t), target, range_xy, range_theta);
+    if GPU_flag == 1
+        if range_theta == 0
+            [Result(t,:), IMG(:,:,t)] = image_regist_translation_GPU(raw_IMG(:,:,t), target, range_xy);
+        else
+            [Result(t,:), IMG(:,:,t)] = image_regist_rigid_GPU(raw_IMG(:,:,t), target, range_xy, range_theta);
+        end
+    else
+        [Result(t,:), IMG(:,:,t)] = image_regist_rigid(raw_IMG(:,:,t), target, range_xy, range_theta);
+    end
     disp(['現在 ',num2str(t),'スライス目を完了']);
 end
 disp('レジスト完了')
