@@ -1,6 +1,6 @@
 range_xy = 30; %ずらす最大値（＋,ー）
 range_theta = 0.1;%回転する最大値(度)
- 
+addpath('function')
 %% tifファイルの読み取り
 tic
 [file, file_path] = uigetfile('*.tif');
