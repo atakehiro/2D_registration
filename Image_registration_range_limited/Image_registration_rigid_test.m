@@ -1,4 +1,4 @@
-
+GPU_flag = 0; %GPUを使う場合は１
 range_xy = 20; %ずらす最大値（＋,ー）
 range_theta = 0.3;%回転する最大値(度)
 addpath('function')
@@ -20,7 +20,15 @@ toc
 tic
 source = raw_IMG1;
 target = raw_IMG2;
-[dif, f] = image_regist_rigid(source, target, range_xy, range_theta);
+if GPU_flag == 1
+    if range_theta == 0
+        [dif, f] = image_regist_translation_GPU(source, target, range_xy);
+    else
+        [dif, f] = image_regist_rigid_GPU(source, target, range_xy, range_theta);
+    end
+else
+    [dif, f] = image_regist_rigid(source, target, range_xy, range_theta);
+end
 toc
 %%
 figure
