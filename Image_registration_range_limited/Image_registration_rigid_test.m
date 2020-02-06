@@ -1,19 +1,19 @@
 
-range_xy = 20; %‚¸‚ç‚·Å‘å’li{,[j
-range_theta = 0.3;%‰ñ“]‚·‚éÅ‘å’l(“x)
- 
-%% tifƒtƒ@ƒCƒ‹‚Ì“Ç‚İæ‚è
+range_xy = 20; %ãšã‚‰ã™æœ€å¤§å€¤ï¼ˆï¼‹,ãƒ¼ï¼‰
+range_theta = 0.3;%å›è»¢ã™ã‚‹æœ€å¤§å€¤(åº¦)
+addpath('function')
+%% tifãƒ•ã‚¡ã‚¤ãƒ«ã®èª­ã¿å–ã‚Š
 tic
 [file, file_path] = uigetfile('*.tif');
 raw_IMG1 = double(imread([file_path, file], 1));
-disp('ƒf[ƒ^“Ç‚İæ‚èŠ®—¹')
+disp('ãƒ‡ãƒ¼ã‚¿èª­ã¿å–ã‚Šå®Œäº†')
 toc
 
-%% tifƒtƒ@ƒCƒ‹‚Ì“Ç‚İæ‚è
+%% tifãƒ•ã‚¡ã‚¤ãƒ«ã®èª­ã¿å–ã‚Š
 tic
 [file, file_path] = uigetfile('*.tif');
 raw_IMG2 = double(imread([file_path, file], 1));
-disp('ƒf[ƒ^“Ç‚İæ‚èŠ®—¹')
+disp('ãƒ‡ãƒ¼ã‚¿èª­ã¿å–ã‚Šå®Œäº†')
 toc
 
 %%
@@ -26,7 +26,7 @@ toc
 figure
 subplot(1,2,1)
     imshowpair(raw_IMG1,raw_IMG2);
-    title("ƒŒƒWƒXƒg‘O")
+    title("ãƒ¬ã‚¸ã‚¹ãƒˆå‰")
 subplot(1,2,2)
     imshowpair(f,target);
-    title("ƒŒƒWƒXƒgŒã")
+    title("ãƒ¬ã‚¸ã‚¹ãƒˆå¾Œ")
