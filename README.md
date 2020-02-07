@@ -6,9 +6,9 @@ registration of time-lapse imaging data
 
 You can Choose fro 2 methods (fast method and precise method) according to your image data property.
 
-Image_registration_fast is fast method but normal precision and only adapted to translation move.
+"Image_registration_fast" is fast method but normal precision and only adapted to translation move.
 
-Image_registration_precise is precise and adapted to rigid move (translation and rotation) but takes much time and you must set the range of searching.
+"Image_registration_precise" is precise and adapted to rigid move (translation and rotation) but takes much time and you must set the range of searching.
 
 Image_registration_fastは、高速なレジストをおこなうコード(精度は普通、回転には対応していない)
 
