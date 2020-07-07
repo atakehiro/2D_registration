@@ -4,7 +4,7 @@ registration of time-lapse imaging data
 <img src="doc/demo.gif" width="800" align="below">
 
 
-You can Choose fro 2 methods (fast method and precise method) according to your image data property.
+You can Choose from 2 methods (fast method and precise method) according to your image data property.
 
 "Image_registration_fast" is fast method but normal precision and only adapted to translation move.
 
